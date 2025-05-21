@@ -1,0 +1,16 @@
+name: Java CI with GitHub Actions
+on: [push]  # 每次 push 代码时触发
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
+    steps:
+      - uses: actions/checkout@v4  # 拉取代码
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  # 使用 Java 17
+          distribution: 'temurin'
+      - name: Compile and Run
+        run: |
+          javac HelloWorld.java
+          java HelloWorld
